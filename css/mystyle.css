@@ -1,0 +1,33 @@
+a {
+    text-decoration: none;
+}
+
+.gywm_1{
+    text-align: center;
+    font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
+
+.gywm_2{
+    text-align: center;
+    padding-top: 12px;
+    font: normal normal normal 18px/14px 'SimSun', SimSun;
+}
+
+ol, ul, menu {
+    list-style:none;
+}
+
+.ipt {
+        border: solid 1px #d2d2d2;
+        border-left-color: #ccc;
+        border-top-color: #ccc;
+        border-radius: 2px;
+        box-shadow: inset 0 1px 0 #f8f8f8;
+        background-color: #fff;
+        padding: 4px 6px;
+        height: 30px;
+        line-height: 21px;
+        color: #555;
+        width: 250px;
+        vertical-align: baseline;
+}

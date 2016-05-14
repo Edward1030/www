@@ -1,0 +1,34 @@
+.span_sty 
+{ 
+color:black;
+font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
+.p_sty
+{ 
+color:black;
+font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
+
+.p_sty_1
+{ 
+color:black;
+font: normal normal normal 12px/23px 'SimSun', SimSun;
+}
+
+.p_sty_2
+{ 
+color:black;
+font: normal normal normal 23px/23px 'SimSun', SimSun;
+font-weight: bold;
+}
+
+.wy-mod-banner p{
+color:black;
+font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
+
+.con_page label, .con_page p, .con_page th, .con_page td, .con_page span{
+color:black;
+font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
+

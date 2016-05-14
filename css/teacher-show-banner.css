@@ -1,0 +1,7 @@
+.wy-mod-banner .focus{width:960px;margin:0px auto;text-align: center;}
+.wy-mod-banner .focus a{text-decoration: none;z-index:3;width:24px;height:34px;position:relative;display: inline-block;*display:inline;overflow: hidden;margin:0px 3px;zoom:1;}
+.wy-mod-banner .focus a .bg-m{z-index:4;color:white;line-height:40px;font-size:40px;position:absolute;display: block;left:2px;top:6px;cursor:pointer; display: none;}
+.wy-mod-banner .focus a .bg-b{background-image:url(../images/img/i_dot.32.png);position:absolute;display: block;left:0px;top:0px;cursor:pointer; width: 18px; height: 18px;}
+.wy-mod-banner .focus a .inner{background-image:url(../images/img/i_dot_hover.32.png);position:absolute;left:0px;top:0px;z-index:9;opacity:0;display: none\0;+display: none;*display: none; width: 18px;height: 18px;}
+.wy-mod-banner .focus a.on .inner,.wy-mod-banner .focus a:hover .inner{cursor:pointer;display:block;border:0;-webkit-transition:opacity .3s ease-in-out;-ms-transition:opacity .3s ease-in-out;transition:opacity .3s ease-in-out;opacity:1;}
+.wy-mod-banner .focus .hover .inner{display:block;}

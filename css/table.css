@@ -1,0 +1,22 @@
+.fee_table{
+    border:1px solid;
+    width :900px;
+}
+.fee_table td
+{
+    text-align: left;
+    border:1px solid;
+    text-align: center;
+    padding-top:5px; padding-bottom:5px;
+}
+.td_s td, p ,label, li
+{
+    color:black;
+    font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
+.xkjl_table td, th
+{
+    vertical-align:middle; text-align:center;
+    color:black;
+    font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
