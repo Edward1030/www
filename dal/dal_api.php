@@ -93,8 +93,9 @@
 		 */
 		public function get_teacher_student_info($user_id){
 
-			   $sql = "select t1.user_id, t2. name, t1.course_name, t2.qq, t2.phone, t1.class_num, t1.has_attend, t1.class_time from ( select t1.user_id, t1.course_name, t1.has_attend, t1.class_time, t1.tea_name, t2.class_num from ( select user_id, course_name, has_attend, class_time, tea_name from user_pay ) t1 join ( select name, class_num from course_info ) t2 on (t1.course_name = t2. name)) t1 join ( select user_id, name, phone, qq from user_info ) t2 on (t1.user_id = t2.user_id) where tea_name = ". $user_id."; ";
+			   $sql = "select t1.user_id, t2. name, t1.course_name, t2.qq, t2.phone, t1.class_num, t1.has_attend, t1.class_time from ( select t1.user_id, t1.course_name, t1.has_attend, t1.class_time, t1.tea_name, t2.class_num from ( select user_id, course_name, has_attend, class_time, tea_name from user_pay ) t1 join ( select name, class_num from course_info ) t2 on (t1.course_name = t2. name)) t1 join ( select user_id, name, phone, qq from user_info ) t2 on (t1.user_id = t2.user_id) where tea_name = '". $user_id."'; ";
 			   $ret_arr = array();
+
 			   $result  = $this->mysql_handler->excute_sql($sql);
 			   while($row  = mysql_fetch_array($result)){
 			   		$item = $row["user_id"]."#".$row["name"]."#".$row["course_name"]."#".$row["qq"]
@@ -233,9 +234,9 @@
 	   			$info  = $info;
 	   			#存储
 	   			$ret   = $redis->HSET($key, $field, $info);
-	   			return $ret = 1 ? "ok" : "err";
+	   			return $ret == 1 ? "ok" : "err";
  	   		}catch (Exception $e) {   
-				print $e->getMessage(); 
+				 error_log(date("Y-m-d H:i:s", time()).$e->getMessage()."\n",3, "/var/log/chess.log");
 			} 
 			return "err";
 		}
@@ -243,7 +244,7 @@
 		/**
 		* 获取棋局信息时间
 		*/
-		public function get_chess_info($user_id, $stu_id, $update_id){
+		public function get_chess_info($user_id, $stu_id, $update_id, $type){
 			try{
 	  			$redis = new Redis();
 	   			$redis->connect('127.0.0.1', 6379);
@@ -257,7 +258,7 @@
 	   			
 	   			return $chess;
  	   		}catch (Exception $e){   
-				print $e->getMessage();   
+				 error_log(date("Y-m-d H:i:s", time()).$e->getMessage()."\n",3, "/var/log/chess.log");
 			} 
 		}
 

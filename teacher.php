@@ -12,16 +12,16 @@
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="js/teacher.js"></script> 
     <link   href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">	
-    <link   href="css/mystyle.css"          rel="stylesheet">  
+    <link   href="css/mystyle.css"        rel="stylesheet"> 
+    <link   href="css/word.css"           rel="stylesheet">
     <link   href="css/teacher.css"           rel="stylesheet"> 
-    <link   href="css/person_center.css"    rel="stylesheet"> 
 <!-- 代码部分begin -->
 </head>
 <body>
 <div style="width:100%; height:94px; border-bottom:1px solid red;">
-	<div style="float:left; margin-top:0px; border:solid 0px;"> 
-	<p  style=" margin-top:34px; font-family:KaiTi; font-size:49px; font-weight:bold;">楚河<span style="font-size:30px;">在线棋院</span></p>
-	</div>
+    <div id = "title" style="float:left; margin-top:20px; border:solid 0px;"> 
+    <p  style="margin-left:80px; font-family:KaiTi; font-size:30px; font-weight:bold;">楚河<span style="font-size:21px;">在线棋院</span></p>
+    </div>
     <?php 
      	session_start();
     	if(isset($_SESSION["user_id"])){
@@ -29,7 +29,7 @@
               if(strlen($_SESSION["user_id"]) >= 6){
                   $name=substr($name, 0, 6)."...";
           } 
-        	echo '<div style="margin-top:30px; margin-right:30px; float:right; border:0px solid;"><p style="font: normal normal normal 18px/23px "Century Gothic", sans-serif;padding-top: 35px; padding-bottom: 35px;">您好,&nbsp'.$name.' |<a href="index.php"><span style="color:black;">返回主页</span></a></p></div>';
+        	echo '<div style="margin-right:30px; float:right; border:0px solid;"><p class="p_sty" style="padding-top:35px; padding-bottom: 35px;">您好,&nbsp'.$name.' |<a href="index.html"><span style="color:black;">返回主页</span></a></p></div>';
     	}
     ?>
 </div>
@@ -38,7 +38,7 @@
     <div style="border:solid 0px; width:1300px; margin:auto;"> 
     <div id= "xuanxiang" style = "float:left; height:320px; width:150px; margin-top:40px; border-right:solid 0px;">
         <ul class="nav nav-pills nav-stacked">
-           <li >                          <a  id="sklb" href="javascript:;"><p>上课学生列表</p></a></li>
+           <li >                          <a  id="sklb" href="javascript:;"><span class="span_sty">上课学生列表</span></a></li>
         </ul>
     </div>
     <div style="float:left;margin-top:40px; margin-left:20px;height: 520px; width:1040px; border-left:solid 1px; padding-left:50px;">

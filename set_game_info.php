@@ -8,5 +8,6 @@
     $user_id   = $_SESSION["user_id"];
 	#设置信息
 	$dal_api = new nc_dal_adapter();
-	$dal_api->set_chess_info($user_id, $stu_id, $type, $update_id, $info);
+	$ret = $dal_api->set_chess_info($user_id, $stu_id, $type, $update_id, $info);
+	print $ret;
 ?>

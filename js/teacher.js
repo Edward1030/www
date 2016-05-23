@@ -58,6 +58,6 @@ function make_sklb_html(){
 
 function sk(stu_id){
   url="chose_stu.php";
-  $.post(url, {stu_id:stu_id}, function(ret){ ret = ret.replace(/\s/g,'');if(ret == "ok"){window.location.href="classroom.php";}else{alert("系统错误，请联系管理员！")}});
+  $.post(url, {stu_id:stu_id}, function(ret){ ret = ret.replace(/\s/g,'');if(ret == "ok"){window.location.href="classroom.html";}else{alert("系统错误，请联系管理员！")}});
 }
 

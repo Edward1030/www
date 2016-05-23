@@ -4,19 +4,15 @@ var chess_player_obj = new chess_player();
 var check_stu_tea_ready_timer;
 var watch_competitor_timer;
 
-function sleep(n) {
-    var start = new Date().getTime();
-    while(true)  if(new Date().getTime()-start > n) break;
-}
 
 function set_opening(){
 		chess_player_obj.set_opening();
-		chess_player_obj.notify_competitor("set_opening", "")
+		chess_player_obj.notify_competitor("set_opening", "");
 }
 	
 function pack_chess(){
 		chess_player_obj.pack_chess();
-		chess_player_obj.notify_competitor("pack_chess", "")
+		chess_player_obj.notify_competitor("pack_chess", "");
 }
 
 
@@ -25,7 +21,7 @@ window.onload = function(){
 	chess_player_obj.set_enter_classroom();	
 	chess_player_obj.restart();
 	check_stu_tea_ready_timer = setInterval("chess_player_obj.check_stu_tea_ready()", 500);
-	watch_competitor_timer    = setTimeout("chess_player_obj.watch_competitor()", 1000);
+	watch_competitor_timer    = setTimeout("chess_player_obj.watch_competitor()", 500);
 }
 
 
@@ -43,17 +39,29 @@ window.onunload  = function(){
 // Ajax相关
 var xmlhttp;
 // Ajax同步处理
-function ajaxProcess_sync(url, str, cfunc, error_func){
+function ajaxProcess_async_notify_competitor(url, str, cfunc, error_func){
 	$.ajax({
 			url:url, 
 			type:"post", 
 			success:cfunc, 
 			error:error_func,
 			data:str,
-			async:false}
+			async:true}
 		);
 }
 
+// Ajax异步处理
+function ajaxProcess_async_watch_competitor(url, str, cfunc){
+	$.ajax({
+			url:url, 
+			type:"post", 
+			success:cfunc, 
+			data:str,
+			error:function(){setTimeout("chess_player_obj.watch_competitor()", 500);},
+			async:true, 
+			timeout:2000}
+		);
+}
 
 // Ajax异步处理
 function ajaxProcess_async(url, str, cfunc){
@@ -68,18 +76,6 @@ function ajaxProcess_async(url, str, cfunc){
 }
 
 
-// Ajax异步处理
-function ajaxProcess_async_notify_competitor(url, str, cfunc){
-	$.ajax({
-			url:url, 
-			type:"post", 
-			success:cfunc, 
-			data:str,
-			error:function(){setTimeout("chess_player_obj.watch_competitor()", 1000);},
-			async:true, 
-			timeout:2000}
-		);
-}
 
 // 象棋类
 function chess_player(){
@@ -109,10 +105,10 @@ function chess_player(){
 							   "blp":12, "brp":72,  "b1b":3,  "b2b":23, "b3b":43, "b4b":63, "b5b":83
 						     };
 	this.cur_cp_coord_ids  = {
-						   "rlc":9,  "rlm":19,  "rlx":29, "rls":39, "rs":49,  "rrs":59, "rrx":69, "rrm":79, "rrc":89,
-						   "rlp":17, "rrp":77,  "r1b":6,  "r2b":26, "r3b":46, "r4b":66, "r5b":86, 
-						   "blc":0,  "blm":10,  "blx":20, "bls":30, "bs":40,  "brs":50, "brx":60, "brm":70, "brc":80,
-						   "blp":12, "brp":72,  "b1b":3,  "b2b":23, "b3b":43, "b4b":63, "b5b":83
+							   "rlc":9,  "rlm":19,  "rlx":29, "rls":39, "rs":49,  "rrs":59, "rrx":69, "rrm":79, "rrc":89,
+							   "rlp":17, "rrp":77,  "r1b":6,  "r2b":26, "r3b":46, "r4b":66, "r5b":86, 
+							   "blc":0,  "blm":10,  "blx":20, "bls":30, "bs":40,  "brs":50, "brx":60, "brm":70, "brc":80,
+							   "blp":12, "brp":72,  "b1b":3,  "b2b":23, "b3b":43, "b4b":63, "b5b":83
 					        };
 	// 棋子对应的图片
 	this.cp_img            = {
@@ -127,9 +123,8 @@ function chess_player(){
 	// 是否已经更新
 	this.competitor_step    = 0;
 	this.my_step            = 0;
-	// 当前是否老师和学生都到齐
-	// 0 都没来， 1 有一个人来， 2 都到齐
-	this.ready_status = 1;
+	// 当前是否老师和学生都到齐。0 都没来， 1 有一个人来， 2 都到齐
+	this.ready_status       = 1;
 }
 
 // 初始化坐标ID对应的X、Y坐标值
@@ -204,19 +199,17 @@ chess_player.prototype.init = function(){
 	var self = this;
 	click_chess = function(chess_id){
 		document.getElementById(chess_id).onclick = function(){
-														  
-														  if(self.notify_competitor("ch", chess_id)){
-														  	 self.click_chess(chess_id);
-														  };
-																	};
+											$.when(self.notify_competitor("ch", chess_id))
+											.done(self.click_chess(chess_id))
+											.fail();
+															   };
 	}
 	click_coord = function(chess_id){
 		document.getElementById(chess_id).onclick = function(){	
-														  
-														   if (self.notify_competitor("co", chess_id)){
-														   		 self.click_coord(chess_id);
-														   };
-														            };
+											$.when(self.notify_competitor("co", chess_id))
+											.done(self.click_coord(chess_id))
+											.fail();
+															   };
 	}
 	for(i in this.cp_ids ){
 		click_chess(this.cp_ids[i]);
@@ -235,7 +228,7 @@ chess_player.prototype.restart = function(){
 	// 清空记录
 	self.clear_game_info();
 	// 走数记录
-	self.my_seq  		 = 0;
+	self.my_step 		 = 0;
 	self.competitor_step = 0;
 	self.ready_status    = 1;
 }
@@ -328,17 +321,21 @@ chess_player.prototype.click_chess = function(chess_id){
 
 // 设置游戏信息
 chess_player.prototype.notify_competitor = function(type, info){
+	//在函数内部，新建一个Deferred对象
+	var dtd = $.Deferred();
 	var self = this;
 	self.my_step = self.my_step + 1;
 	var post_data = type + "-" + info;
 	url = "/set_game_info.php";
 	ret = "";
-	ajaxProcess_sync(url, 
-					{step_seq:self.my_step, info:post_data}, 
-					function(ret_str){ret = ret_str.replace(/\s/g,'')},
-					function(){self.my_step = self.my_step - 1;}	
-					);
-	return  ret=="ok" ? true : false;
+	ajaxProcess_async_notify_competitor(url, 
+										{step_seq:self.my_step, info:post_data}, 
+										function(ret_str){dtd.resolve()},
+										function(){self.my_step = self.my_step - 1;
+											       dtd.reject();
+											      }	
+										);
+	return  dtd.promise();
 }
 
 // 获取游戏信息
@@ -375,10 +372,10 @@ chess_player.prototype.watch_competitor = function(){
 					}
 				}
 			}
-			setTimeout("chess_player_obj.watch_competitor()", 1000);
+			setTimeout("chess_player_obj.watch_competitor()", 500);
 		}	
 		var tmp_step_seq  = self.competitor_step + 1;
-		ajaxProcess_async_notify_competitor(url, {step_seq:tmp_step_seq}, cfunc);
+		ajaxProcess_async_watch_competitor(url, {step_seq:tmp_step_seq}, cfunc);
 }
 
 // 清空游戏信息
@@ -418,10 +415,10 @@ chess_player.prototype.check_stu_tea_ready = function(){
 			(items[0] == "") ? tea="老&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师: <span style='color:red'>缺席</span>":tea="老&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师: <span style='color:white'>"+items[0]+"</span>"; 
 			(items[1] == "") ? stu="学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生: <span style='color:red'>缺席</span>":stu="学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生: <span style='color:white'>"+items[1]+"</span>"; 
 			if(items[0] == "未知"){
-				tea = "老&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师: <a href='person_center.php'><span style='color:white'>点击完善个人信息/span></a>";
+				tea = "老&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师: <a href='person_center.php'><span style='color:white'>点击完善“个人信息”/span></a>";
 			}
 			if(items[1] == "未知"){
-				stu = "学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生: <a href='person_center.php'><span style='color:white'>点击完善个人信息</span></a>";
+				stu = "学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生: <a href='person_center.php'><span style='color:white'>点击完善“个人信息”</span></a>";
 			}
 			document.getElementById("tea_name").innerHTML = tea;
 			document.getElementById("stu_name").innerHTML = stu;
