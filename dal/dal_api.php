@@ -549,5 +549,73 @@
 				print $e->getMessage(); 
 			} 
 		}
+
+		/**
+		 * 保存记录
+		 */
+		public function store_record($jbfl, $xllx, $qpmc, $record_str){
+			try{
+				$sql = "replace into train_record(level, train, name, content)values('".
+					    $jbfl."','".$xllx."','".$qpmc."','".$record_str."')";
+				$result = $this->mysql_handler->excute_sql($sql);
+				print $sql;
+				return  $result == True ? True : False;
+			}catch (Exception $e) {   
+				print $e->getMessage(); 
+			} 
+				return False;
+		}
+
+		/**
+		 * 删除记录
+		 */
+		public function delete_record($jbfl, $xllx, $qpmc){
+			try{
+				$sql = "delete from train_record where level ='".$jbfl."'and train='".$xllx."'and name='".$qpmc."';";
+				$result = $this->mysql_handler->excute_sql($sql);
+				return  $result == True ? True : False;
+			}catch (Exception $e) {   
+				print $e->getMessage(); 
+			} 
+				return False;
+		}
+
+		/**
+		 * 获取训练棋谱
+		 */
+		public function get_qp_info(){
+			try{
+				$ret_arr = array();
+				$sql = "select level, train, name,  content from train_record order by level, train";
+				$result = $this->mysql_handler->excute_sql($sql);
+				while($row  = mysql_fetch_array($result)){
+			   		$item = $row["level"]."@".$row["train"]."@".$row["name"]."@".$row["content"];
+			   		$ret_arr[] = $item;
+			    }
+			    return json_encode($ret_arr);
+			}catch (Exception $e) {   
+				print $e->getMessage(); 
+			} 
+				return "err";
+		}
+
+		/**
+		 * 获取训练项目
+		 */
+		public function get_train_item($level, $train){
+			try{
+				$ret_arr = array();
+				$sql = "select level, train, name,  content from train_record where level='".$level."' and train = '".$train."'";
+				$result = $this->mysql_handler->excute_sql($sql);
+				while($row  = mysql_fetch_array($result)){
+			   		$item = $row["level"]."&".$row["train"]."&".$row["name"]."&".$row["content"];
+			   		$ret_arr[] = $item;
+			    }
+			    return json_encode($ret_arr);
+			}catch (Exception $e) {   
+				print $e->getMessage(); 
+			} 
+				return "err";
+		}
 	}
 ?>

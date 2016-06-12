@@ -3,6 +3,42 @@
 color:black;
 font: normal normal normal 18px/23px 'SimSun', SimSun;
 }
+
+.span_sty_1
+{ 
+color:white;
+font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
+.my_sty
+{ 
+color:white;
+font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
+.span_sty_3
+{ 
+color:red;
+font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
+
+.font_sty
+{ 
+color:black;
+
+font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
+
+.font_sty_1
+{ 
+color:black	;
+font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
+
+.font_sty_2
+{ 
+padding-right:10px;
+color:white;
+font: normal normal normal 18px/23px 'SimSun', SimSun;
+}
 .p_sty
 { 
 color:black;
@@ -32,3 +68,15 @@ color:black;
 font: normal normal normal 18px/23px 'SimSun', SimSun;
 }
 
+.td_sty {
+padding-top:25px;
+padding-left:10px;
+padding-bottom:25px; 	
+
+}
+
+
+.td_sty_1 {
+padding-top:0px;
+padding-bottom:0px; 
+}

@@ -370,7 +370,7 @@ $("#optionsRadios5").click(function(){
     $=jQuery;
     function check_nick_name(){
         var nick_name = $("input#nick_name").val();
-        $.post("check_nick_name.php", {nick_name:nick_name}, function(result){
+        $.post("check_nick_name.php", {nick_name:check_nick_name_name}, function(result){
             // 检查昵称是否有重复
             ret = result.replace(/\s/g,'');
             if(ret == "False" && nick_name != ""){
@@ -593,10 +593,10 @@ $("#optionsRadios5").click(function(){
       $("#tsk_xx").html(html_str);
     }
     // 续费
-    function tsk_fh(course_name){
-        $("#tsk").fadeOut(100);
-        $("#yxkc").click();
-    }
+      function tsk_fh(course_name){
+          $("#tsk").fadeOut(100);
+          $("#yxkc").click();
+      }
 </script>
 </body>
 </html> 
