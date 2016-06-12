@@ -49,7 +49,7 @@ function make_index_banner(ret_str){
   }else{
     if(items[1] == "s"){
       //学生登录
-      content = '<div style="margin-top:34px; margin-left:60px; float:right;"><p style="font: normal normal normal 18px/23px "SimSun", SimSun;padding-top: 35px; padding-bottom: 35px;">您好,&nbsp'+ items[0] +' | <a href="person_center.html" style=" "><span style="color:black">个人中心</span></a>| <a href="judge_stu_or_teacher.php"><span style="color:red">点击上课</span></a>|<a href="session_destory.php"><span style="color:black;">注销</span></a></p></div>';
+      content = '<div style="margin-top:34px; margin-left:60px; float:right;"><p style="font: normal normal normal 18px/23px "SimSun", SimSun;padding-top: 35px; padding-bottom: 35px;">您好,&nbsp'+ items[0] +' | <a href="person_center.html" style=" "><span style="color:black">个人中心</span></a>| <a href="chess_train.html"><span style="color:red">象棋训练</span></a>|<a href="session_destory.php"><span style="color:black;">注销</span></a></p></div>';
     }else if(items[1] == "t"){
       content = '<div style="margin-top:34px; margin-left:60px; float:right;"><p style="font: normal normal normal 18px/23px "SimSun", SimSun;padding-top: 35px; padding-bottom: 35px;">您好,&nbsp'+ items[0] +' | <a href="judge_stu_or_teacher.php"><span style="color:red">选择学生</span></a>|<a href="session_destory.php"><span style="color:black;">注销</span></a></p></div>'; 
     }else if(items[1] == "a"){
