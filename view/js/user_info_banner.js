@@ -85,7 +85,7 @@ function make_person_center_banner(ret_str){
   if(items.length != 2){
     // 用户没有登录
   }else{
-    content='<div style="margin-right:30px; float:right; border:0px solid;"><p class="p_sty" style="padding-top:35px; padding-bottom: 35px;">您好,&nbsp'+ items[0] +' | <a href="/controller/judge_stu_or_teacher.php"><span style="color:red">点击上课</span></a>|<a href="/index.html"><span style="color:black;">返回主页</span></a></p></div>';
+    content='<div style="margin-right:30px; float:right; border:0px solid;"><p class="p_sty" style="padding-top:35px; padding-bottom: 35px;">您好,&nbsp'+ items[0] +' | <a href="/index.html"><span style="color:black;">返回主页</span></a></p></div>';
   }
   // 添加到html
   $('#title').after(content);
