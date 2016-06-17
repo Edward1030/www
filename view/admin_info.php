@@ -56,7 +56,7 @@
         <div id="bxqp_li" style="position:absolute; display:none;width:1040px;">
             <div class="row" >
                 <div class="col-md-2" style="text-align:left;">
-                    <a href="type_record.html"><img src="images/icon/tj.svg" style="vertical-align:bottom; height:25px; width:25px;"/><span class="span_sty" style="color:black;">添加</span></a>
+                    <a href="admin_rec_che.html"><img src="images/icon/tj.svg" style="vertical-align:bottom; height:25px; width:25px;"/><span class="span_sty" style="color:black;">添加</span></a>
                 </div>
             </div>
             <div class="row" style="margin-top:50px;" >
