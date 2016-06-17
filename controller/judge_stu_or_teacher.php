@@ -13,7 +13,7 @@
     		#设置开始时间
     		$dal_api  = new nc_dal_adapter();
     		$dal_api->set_chess_start_time($_SESSION["user_id"]);
-    		header("Location:classroom.html");
+    		header("Location:/view/classroom.html");
     	}else if($_SESSION['user_type'] == "t"){
 			header("Location:/view/tea_info.php");
 		}else{

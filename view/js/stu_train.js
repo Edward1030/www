@@ -30,7 +30,7 @@ function make_1v1_con(){
               html_str += "<td>"+ has_pay + "元</td>";
               html_str += "<td>"+ refund + "元</td>";
               html_str += "<td style=\"text-align:center\" onclick='ck(\""+ course_name +"\" , \"" + class_time + "\")'>"+ "<span>查看</span>" + "</td>";
-              html_str += "<td ><a style='color:black' href='judge_stu_or_teacher.php'><span class='span_sty_3' style=\"color:red;\">点击上课 </span></a></td></tr>";
+              html_str += "<td ><a style='color:black' href='/controller/judge_stu_or_teacher.php'><span class='span_sty_3' style=\"color:red;\">点击上课 </span></a></td></tr>";
             }else{
               html_str += "<tr>";
               html_str += "<td>"+ course_name + "</td>";
@@ -40,7 +40,7 @@ function make_1v1_con(){
               html_str += "<td>"+ has_pay + "元</td>";
               html_str += "<td>"+ refund + "元</td>";
               html_str += "<td style=\"text-align:center\" onclick='ck(\""+ course_name +"\" , \"" + class_time + "\")'>"+ "<span>查看</span>" + "</td>";
-              html_str += "<td ><a style='color:black' href='judge_stu_or_teacher.php'><span class='span_sty_3' style=\"color:red;\">点击上课 </span></a></td></tr>";
+              html_str += "<td ><a style='color:black' href='/controller/judge_stu_or_teacher.php'><span class='span_sty_3' style=\"color:red;\">点击上课 </span></a></td></tr>";
             }
           }
 
