@@ -429,7 +429,7 @@ chess_player.prototype.check_stu_tea_ready = function(){
 				self.ready_status = 2;
 				clearInterval(check_stu_tea_ready_timer);
 				check_stu_tea_ready_timer = setInterval("chess_player_obj.check_stu_tea_ready()", 5000);
-			}// 状态转变  都到齐 -> 变为一个人
+			}// 状态转变  都到齐 -> 变为一个人get_open_class_info
 			else if(self.ready_status == 2 && (items[0] == "" ||  items[1] == "")){
 				//变更状态、调整查询时间。
 				self.ready_status = 1; 

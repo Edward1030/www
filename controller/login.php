@@ -10,6 +10,9 @@
         $_SESSION['user_type'] = $dal_api->get_user_type($user_id); 
         $_SESSION['user_name'] = $dal_api->get_user_name($user_id);
         $_SESSION['user_id'] = $user_id;
+        if($_SESSION['user_type'] == "s"){  
+            $_SESSION["stu_id"] = $_SESSION["user_id"];
+        }
         echo '<html>'; 
         echo '<head><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /></head>'; 
         echo "<script type='text/javascript'>alert('登陆成功');</script>";

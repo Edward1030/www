@@ -20,6 +20,13 @@ color:red;
 font: normal normal normal 18px/23px 'SimSun', SimSun;
 }
 
+.span_sty_4
+{ 
+color:black;
+font-weight:bold;
+font: bold bold bold 18px/23px 'SimSun', SimSun;
+}
+
 .font_sty
 { 
 color:black;

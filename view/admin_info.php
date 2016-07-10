@@ -44,6 +44,7 @@
            <li  style="margin-top:35px; "><a id="zcxs"  href="javascript:;"><span class="span_sty">已注册学生</span></a></li>
            <li  style="margin-top:35px; "><a id="jfpk"  href="javascript:;"><span class="span_sty">缴费学生管理</span></a></li>
            <li  style="margin-top:35px; "><a id="bxqp"  href="javascript:;"><span class="span_sty">编写棋谱</span></a></li>
+           <li  style="margin-top:35px; "><a id="gkkpq"  href="javascript:;"><span class="span_sty">公开课排期</span></a></li>
         </ul>
     </div>
     <div style="float:left;margin-top:40px; margin-left:20px;height: 520px; width:1040px; border-left:solid 1px; padding-left:50px;">
@@ -79,6 +80,8 @@
                         <img src="images/icon/sc.svg"  style="vertical-align:bottom; height:25px; width:25px;"/><span class="span_sty" id="delqp" style="color:black;">删除</span>
                 </div>
             </div>
+        </div>
+        <div id="gkkpq_li" style="position:absolute; display:none;">
         </div>
         </div>
     </div>

@@ -54,6 +54,8 @@ function make_index_banner(ret_str){
       content = '<div style="margin-top:34px; margin-left:60px; float:right;"><p style="font: normal normal normal 18px/23px "SimSun", SimSun;padding-top: 35px; padding-bottom: 35px;">您好,&nbsp'+ items[0] +' | <a href="/controller/judge_stu_or_teacher.php"><span style="color:red">选择学生</span></a>|<a href="/controller/session_destory.php"><span style="color:black;">注销</span></a></p></div>'; 
     }else if(items[1] == "a"){
       content = '<div style="margin-top:34px; margin-left:60px; float:right;"><p style="font: normal normal normal 18px/23px "SimSun", SimSun;padding-top: 35px; padding-bottom: 35px;">您好,&nbsp'+ items[0] +' | <a href="/controller/judge_stu_or_teacher.php"><span style="color:red">棋院管理</span></a>|<a href="/controller/session_destory.php"><span style="color:black;">注销</span></a></p></div>'; 
+    }else if(items[1] == "o"){
+      content = '<div style="margin-top:34px; margin-left:60px; float:right;"><p style="font: normal normal normal 18px/23px "SimSun", SimSun;padding-top: 35px; padding-bottom: 35px;">您好,&nbsp'+ items[0] +' | <a href="/controller/judge_open_class.php"><span style="color:red">公开课</span></a>|<a href="/controller/session_destory.php"><span style="color:black;">注销</span></a></p></div>'; 
     }else{
       // 错误
     }

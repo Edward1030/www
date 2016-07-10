@@ -251,6 +251,9 @@
 	   			$redis->select(0);
 	   			#hash描述： key:stu_id, field:chess + update_id, field:info
 	   			$chose_queue = ($type == "s" ? "t" : "s");
+	   			if($stu_id == "open_class_chess"){
+	   				$chose_queue = "o";
+	   			}
 	   			$key   = $stu_id."_".$chose_queue;
 	   			$field = $update_id; 
 	   			#获取 			
@@ -617,5 +620,123 @@
 			} 
 				return "err";
 		}
-	}
+
+		/**
+		 * 记录公开课的学生
+		 */
+		public function set_open_class_stu_num($user_id){
+			try{
+				$redis = new Redis();
+	   			$redis->connect('127.0.0.1', 6379);	
+	   			$redis->select(0);
+	   			#hash描述： key:stu_id_type, field:chess + update_id, field:info
+	   			$key   = "open_class_stu_num";
+	   			#存储
+	   			$ret   = $redis->incr($key);
+	   			return $ret == 1 ? "ok" : "err";
+			}catch (Exception $e) {   
+				print $e->getMessage(); 
+			} 
+			return "err";
+		}
+
+		/**
+		 * 记录公开课的老师
+		 */
+		public function set_open_class_tea_num($user_name){
+			try{
+				$redis = new Redis();
+	   			$redis->connect('127.0.0.1', 6379);	
+	   			$redis->select(0);
+	   			#hash描述： key:stu_id_type, field:chess + update_id, field:info
+	   			$key   = "open_class_tea_name";
+	   			$value = $user_name;
+	   			#存储
+	   			$ret   = $redis->SET($key, $value);
+	   			return $ret == 1 ? "ok" : "err";
+			}catch (Exception $e) {   
+				print $e->getMessage(); 
+			}
+			return "err"; 
+		}
+
+		/**
+		 * 离开公开课
+		 */
+		public function set_exit_open_class($user_id, $user_type){
+			try{
+				// 写入redis作为签到。
+				$redis = new Redis();
+	   			$redis->connect('127.0.0.1', 6379);
+	   			$redis->select(0);
+	   			$ret = "";
+	   			if($user_type == "s"){
+	   				$ret = $redis->decr("open_class_stu_num");
+	   			}else{
+	   				$ret = $redis->Del("open_class_tea_name");
+	   				$ret = $redis->HDel("open_class_chess_o");
+	   			}
+	   			return "ok";
+	   		}catch (Exception $e) {   
+				print $e->getMessage();   
+			} 
+			return "err";
+		}
+
+		/**
+		 * 离开公开课
+		 */
+		public function get_open_class_info(){
+			try{
+				// 写入redis作为签到。
+				$redis = new Redis();
+	   			$redis->connect('127.0.0.1', 6379);
+	   			$redis->select(0);
+	   			$ret = "";
+	   			$stu_num  = $redis->GET("open_class_stu_num");
+	   			$tea_name = $redis->GET("open_class_tea_name");
+	   			return $stu_num."#".$tea_name;
+	   		}catch (Exception $e) {   
+				print $e->getMessage();   
+			} 
+			return "err1";
+		}
+
+		/**
+		 * 获取教师走的所有步骤
+		 */
+		public function get_open_class_all_tea_chess($queue){
+			try{
+				// 写入redis作为签到。
+				$redis = new Redis();
+	   			$redis->connect('127.0.0.1', 6379);
+	   			$redis->select(0);
+	   			$key = "open_class_chess_o";
+	   			#获取 			
+	   			$chess = $redis->HGETALL($key);
+	   			return json_encode($chess);
+	   		}catch (Exception $e) {   
+				print $e->getMessage();   
+			} 
+			return "err1";
+		}
+
+		/**
+		 * 清楚信息
+		 */
+		public function clear_open_class_game_info(){
+			try{
+				$redis = new Redis();
+	   			$redis->connect('127.0.0.1', 6379);	
+	   			$redis->select(0);
+	   			#hash描述： key:stu_id, field:chess + update_id, field:info
+	   			$key   = "open_class_chess_o";
+	   			#删除
+	   			$redis->DEL($key);
+	   		}catch (Exception $e) {   
+				print $e->getMessage();   
+			} 
+			return "err1";
+		}
+	}	
 ?>

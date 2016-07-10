@@ -311,11 +311,11 @@ h1 {
 }
 #templatemo_timeline .left_timer {
     float: right;
-    background: url("../images/arrow_left.png") 0 5px;
+    background: url("/view/images/arrow_left.png") 0 5px;
 }
 #templatemo_timeline .right_timer {
     float: left;
-    background: url("../images/arrow_right.png") 0px 5px;
+    background: url("/view/images/arrow_right.png") 0px 5px;
 }
 #templatemo_timeline .left_timer ,
 #templatemo_timeline .right_timer {

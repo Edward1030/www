@@ -45,3 +45,14 @@ table.gridtable td {
     color:black;
     font: normal normal normal 18px/23px 'SimSun', SimSun;
 }
+
+table.table_sty_1 td
+{
+    border-width: 0px;
+    width:270px;
+    font: normal normal normal 18px/23px "SimSun", SimSun;
+    padding: 3px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+}
