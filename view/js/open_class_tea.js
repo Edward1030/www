@@ -39,10 +39,10 @@ window.history = function(){
 }
 
 function back_to_stu_train(){
-	url = "/controller/set_exit_open_class.php/";
+	url = "/controller/set_exit_open_class.php";
 	var self = this;
 	cfunc = function(ret_str){
-		window.location.href = "/index.html/";
+		window.location.href = "/index.html";
 	}
 	$.ajax({url:url, type:"post", success:cfunc, data:{}, async:true, timeout:2000});
 }
