@@ -29,16 +29,31 @@ window.onload = function(){
 }
 
 
-function back_to_stu_train(){
-	window.location.href = "/index.html";
+window.history = function(){
+	url = "/controller/set_exit_open_class.php/";
+	var self = this;
+	cfunc = function(ret_str){
+		window.location.href = "/view/stu_train.html";
+	}
+	$.ajax({url:url, type:"post", success:cfunc, data:{}, async:true, timeout:2000});
 }
 
+function back_to_stu_train(){
+	url = "/controller/set_exit_open_class.php/";
+	var self = this;
+	cfunc = function(ret_str){
+		window.location.href = "/view/stu_train.html";
+	}
+	$.ajax({url:url, type:"post", success:cfunc, data:{}, async:true, timeout:2000});
+}
+
+
 window.onbeforeunload  = function(){
-	chess_classroom_manager_obj.set_exit_open_class();
+	// chess_classroom_manager_obj.set_exit_open_class();
 }
 
 window.onunload  = function(){
-	chess_classroom_manager_obj.set_exit_open_class();
+	// chess_classroom_manager_obj.set_exit_open_class();
 }
 
 
