@@ -394,7 +394,7 @@ chess_classroom_manager.prototype.watch_tea_and_num = function(){
 		(items[1] == "") ?  tea_name = "缺席" : tea_name = items[1]; 
 		(items[0] == "") ?  stu_num  = "0"    : stu_num  = items[0]; 
 		if(items[1] == ""){
-			self.competitor_step = 0;
+			self.competitor_step = -1;
 		}
 		tea_name_html   = '讲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师: <span style="color:red">'+ tea_name + '</span>';
 		stu_num_html    = '学生人数: <span style="color:red">'+ stu_num +'</span>';

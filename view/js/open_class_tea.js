@@ -33,7 +33,7 @@ window.history = function(){
 	url = "/controller/set_exit_open_class.php/";
 	var self = this;
 	cfunc = function(ret_str){
-		window.location.href = "/view/stu_train.html";
+		window.location.href = "/index.html/";
 	}
 	$.ajax({url:url, type:"post", success:cfunc, data:{}, async:true, timeout:2000});
 }
@@ -42,7 +42,7 @@ function back_to_stu_train(){
 	url = "/controller/set_exit_open_class.php/";
 	var self = this;
 	cfunc = function(ret_str){
-		window.location.href = "/view/stu_train.html";
+		window.location.href = "/index.html/";
 	}
 	$.ajax({url:url, type:"post", success:cfunc, data:{}, async:true, timeout:2000});
 }
