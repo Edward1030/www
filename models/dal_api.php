@@ -674,7 +674,7 @@
 	   				$ret = $redis->decr("open_class_stu_num");
 	   			}else{
 	   				$ret = $redis->Del("open_class_tea_name");
-	   				$ret = $redis->HDel("open_class_chess_o");
+	   				$ret = $redis->Del("open_class_chess_o");
 	   			}
 	   			return "ok";
 	   		}catch (Exception $e) {   
