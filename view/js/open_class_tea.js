@@ -19,6 +19,7 @@ function pack_chess(){
 }
 
 window.onload = function(){
+
 	chess_classroom_manager_obj.chess_player.border_pos.init();
 	chess_classroom_manager_obj.chess_player.open_chess(chess_classroom_manager_obj.chess_player.init_cp_coord_ids);
 	chess_classroom_manager_obj.notify_competitor("open_chess", "");
@@ -124,7 +125,8 @@ chess_player.prototype.open_chess = function(cp_coord_ids_param){
 }
 
 // 重开
-chess_player.prototype.restart = function(cp_coord_ids_param, do_actual_move=true){
+chess_player.prototype.restart = function(cp_coord_ids_param, do_actual_move){
+	do_actual_move = arguments[1] ? arguments[1] : true;
 	var self = this;
 	// 初始化当前棋子左边
 	self.cur_cp_coord_ids    = cp_coord_ids_param;
@@ -147,6 +149,7 @@ chess_player.prototype.restart = function(cp_coord_ids_param, do_actual_move=tru
 
 // 装盒
 chess_player.prototype.pack_chess = function(do_actual_move){
+	do_actual_move = arguments[1] ? arguments[1] : true;
 	var self = this;
 	// 初始化当前棋子
 	var i = 90;
@@ -167,7 +170,8 @@ chess_player.prototype.pack_chess = function(do_actual_move){
 	}
 }
 
-chess_player.prototype.move = function(click_id, do_actual_move=true){
+chess_player.prototype.move = function(click_id, do_actual_move){
+	do_actual_move = arguments[1] ? arguments[1] : true;
 	var self = this;
 	//棋子ID
 	if($.inArray(click_id, self.cp_ids) != -1){
@@ -279,7 +283,7 @@ function chess_classroom_manager(chess_player_param){
 }
 
 chess_classroom_manager.prototype.watch_competitor  = function(){
-	url = "/controller/get_open_class_chess.php";
+	url = "/controller/get_open_class_chess.php/";
 	var self = this;
 	cfunc = function(ret_str){	
 			items  = ret_str.replace(/\s/g,'').split("#");
@@ -316,7 +320,7 @@ chess_classroom_manager.prototype.watch_competitor  = function(){
 		}	
 		var tmp_step_seq  = self.competitor_step + 1;
 		$.ajax({url:url, type:"post", success:cfunc, data:{step_seq:tmp_step_seq},
-				error:function(){setTimeout("chess_classroom_manager.watch_competitor()", 500);},
+				error:function(){setTimeout("chess_classroom_manager_obj.watch_competitor()", 500);},
 				async:true, 
 				timeout:2000});
 }
@@ -328,7 +332,7 @@ chess_classroom_manager.prototype.notify_competitor = function(type, info){
 	var self = this;
 	self.my_step = self.my_step + 1;
 	var post_data = type + "-" + info;
-	url = "/controller/set_open_class_chess.php";
+	url = "/controller/set_open_class_chess.php/";
 	ret = "";
 	$.ajax({
 			url:url, 
@@ -369,7 +373,7 @@ chess_classroom_manager.prototype.reg_click = function(id){
 
 // 观察老师和学生
 chess_classroom_manager.prototype.watch_tea_and_num = function(){
-	url = "/controller/get_open_class_info.php";
+	url = "/controller/get_open_class_info.php/";
 	var self = this;
 	cfunc = function(ret_str){
 		var items  = ret_str.replace(/\s/g,'').split("#");
@@ -390,7 +394,7 @@ chess_classroom_manager.prototype.watch_tea_and_num = function(){
 
 // 离开房间
 chess_classroom_manager.prototype.set_exit_open_class = function(){
-	url = "/controller/set_exit_open_class.php";
+	url = "/controller/set_exit_open_class.php/";
 	var self = this;
 	cfunc = function(ret_str){
 	}
@@ -400,7 +404,7 @@ chess_classroom_manager.prototype.set_exit_open_class = function(){
 // 同步教师的棋盘
 chess_classroom_manager.prototype.sync_tea_chess = function(){
 	// 获取老师已经走的所有的棋
-	url = "/controller/get_open_class_all_tea_chess	.php";
+	url = "/controller/get_open_class_all_tea_chess.php/";
 	var self = this;
 	cfunc = function(ret_str){
 		// 判断不为空
