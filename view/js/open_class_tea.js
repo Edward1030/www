@@ -9,8 +9,9 @@ var watch_tea_and_num_timer;
 //======================================================================
 // window 动作
 function set_opening(){
-		chess_classroom_manager_obj.chess_player.restart();
-		chess_classroom_manager_obj.notify_competitor("open_chess", "");
+		chess_classroom_manager_obj.chess_player.restart(chess_classroom_manager_obj.chess_player.init_cp_coord_ids);
+		chess_classroom_manager_obj.reg_click();
+		chess_classroom_manager_obj.notify_competitor("restart", "");
 }
 	
 function pack_chess(){
@@ -22,7 +23,7 @@ window.onload = function(){
 
 	chess_classroom_manager_obj.chess_player.border_pos.init();
 	chess_classroom_manager_obj.chess_player.open_chess(chess_classroom_manager_obj.chess_player.init_cp_coord_ids);
-	chess_classroom_manager_obj.notify_competitor("open_chess", "");
+	chess_classroom_manager_obj.notify_competitor("restart", "");
 	chess_classroom_manager_obj.reg_click();
 	watch_competitor_timer   = setTimeout ("chess_classroom_manager_obj.watch_competitor()", 1000);
 	watch_tea_and_num_timer  = setInterval("chess_classroom_manager_obj.watch_tea_and_num()", 2000);
@@ -114,8 +115,8 @@ function chess_player(border_pos_param){
 	// 棋子对应的图片
 	this.cp_img              = {"rlc":"r_c", "rlm":"r_m", "rlx":"r_x", "rls":"r_s", "rs":"r_j", "rrs":"r_s", "rrx":"r_x", "rrm":"r_m", "rrc":"r_c", "rlp":"r_p", "rrp":"r_p", "r1b":"r_z", "r2b":"r_z", "r3b":"r_z", "r4b":"r_z", "r5b":"r_z", "blc":"b_c", "blm":"b_m", "blx":"b_x", "bls":"b_s", "bs":"b_j", "brs":"b_s", "brx":"b_x", "brm":"b_m", "brc":"b_c", "blp":"b_p", "brp":"b_p", "b1b":"b_z", "b2b":"b_z", "b3b":"b_z", "b4b":"b_z", "b5b":"b_z"};
 	// 棋子对应的坐标i
-	// this.init_cp_coord_ids   = ["rlc":9,  "rlm":19,  "rlx":29, "rls":39, "rs":49,  "rrs":59, "rrx":69, "rrm":79, "rrc":89,"rlp":17, "rrp":77,  "r1b":6,  "r2b":26, "r3b":46, "r4b":66, "r5b":86, "blc":0,  "blm":10,  "blx":20, "bls":30, "bs":40,  "brs":50, "brx":60, "brm":70, "brc":80,"blp":12, "brp":72,  "b1b":3,  "b2b":23, "b3b":43, "b4b":63, "b5b":83];
-	this.init_cp_coord_ids   = {rlc:9,  rlm:19,  rlx:29, rls:39, rs:49,  rrs:59, rrx:69, rrm:79, rrc:89,rlp:17, rrp:77,  r1b:6,  r2b:26, r3b:46, r4b:66, r5b:86, blc:0,  blm:10,  blx:20, bls:30, bs:40,  brs:50, brx:60, brm:70, brc:80,blp:12, brp:72, b1b:3,  b2b:23, b3b:43, b4b:63, b5b:83};
+	this.init_cp_coord_ids   = {"rlc":9,  "rlm":19,  "rlx":29, "rls":39, "rs":49,  "rrs":59, "rrx":69, "rrm":79, "rrc":89,"rlp":17, "rrp":77,  "r1b":6,  "r2b":26, "r3b":46, "r4b":66, "r5b":86, "blc":0,  "blm":10,  "blx":20, "bls":30, "bs":40,  "brs":50, "brx":60, "brm":70, "brc":80,"blp":12, "brp":72,  "b1b":3,  "b2b":23, "b3b":43, "b4b":63, "b5b":83};
+	//this.init_cp_coord_ids   = {rlc:9,  rlm:19,  rlx:29, rls:39, rs:49,  rrs:59, rrx:69, rrm:79, rrc:89,rlp:17, rrp:77,  r1b:6,  r2b:26, r3b:46, r4b:66, r5b:86, blc:0,  blm:10,  blx:20, bls:30, bs:40,  brs:50, brx:60, brm:70, brc:80,blp:12, brp:72, b1b:3,  b2b:23, b3b:43, b4b:63, b5b:83};
 	// this.cur_cp_coord_ids    = {"rlc":9,  "rlm":19,  "rlx":29, "rls":39, "rs":49,  "rrs":59, "rrx":69, "rrm":79, "rrc":89,"rlp":17, "rrp":77,  "r1b":6,  "r2b":26, "r3b":46, "r4b":66, "r5b":86, "blc":0,  "blm":10,  "blx":20, "bls":30, "bs":40,  "brs":50, "brx":60, "brm":70, "brc":80,"blp":12, "brp":72,  "b1b":3,  "b2b":23, "b3b":43, "b4b":63, "b5b":83};
 	this.cur_cp_coord_ids    = {rlc:9,  rlm:19,  rlx:29, rls:39, rs:49,  rrs:59, rrx:69, rrm:79, rrc:89, rlp:17, rrp:77,  r1b:6,  r2b:26, r3b:46, r4b:66, r5b:86, blc:0,  blm:10,  blx:20, bls:30, bs:40,  brs:50, brx:60, brm:70, brc:80, blp:12, brp:72,  b1b:3,  b2b:23, b3b:43, b4b:63, b5b:83};
 	// 当前选中的棋子id
@@ -127,14 +128,13 @@ function chess_player(border_pos_param){
 // 开局
 chess_player.prototype.open_chess = function(cp_coord_ids_param){
 	var self = this;
-	var init_cp_coord_ids = cp_coord_ids_param;
 
 	var chess_html = "" 
 	// 嵌入棋子图片
 	for(i in self.cp_ids){
 		img_id      = self.cp_img[self.cp_ids[i]];
-		coord_id    = init_cp_coord_ids[self.cp_ids[i]];
-		chess_html = chess_html + '<img id ="'+ self.cp_ids[i] + '"'+' style = "position:absolute; top:' +  this.border_pos.coord_pos_y[coord_id] + 'px; left:' + this.border_pos.coord_pos_x[coord_id] + 'px;"'+' src="images/chess/' + img_id + '.png"'+'></img>';
+		coord_id    = cp_coord_ids_param[self.cp_ids[i]];
+		chess_html  = chess_html + '<img id ="'+ self.cp_ids[i] + '"'+' style = "position:absolute; top:' +  this.border_pos.coord_pos_y[coord_id] + 'px; left:' + this.border_pos.coord_pos_x[coord_id] + 'px;"'+' src="images/chess/' + img_id + '.png"'+'></img>';
 	}
 	document.getElementById("chessboard").innerHTML += chess_html;
 }
@@ -144,7 +144,9 @@ chess_player.prototype.restart = function(cp_coord_ids_param, do_actual_move){
 	do_actual_move = arguments[1] ? arguments[1] : true;
 	var self = this;
 	// 初始化当前棋子左边
-	self.cur_cp_coord_ids    = cp_coord_ids_param;
+	for(var i in cp_coord_ids_param){
+		self.cur_cp_coord_ids[i] = cp_coord_ids_param[i];
+	}
 	// 初始化选中棋子坐标
 	if(self.cur_chess_id  != ""){
 		if(do_actual_move){
@@ -309,28 +311,6 @@ chess_classroom_manager.prototype.watch_competitor  = function(){
 				document.getElementById("start_time").innerHTML = "开始时间:  " + "未开始";
 				document.getElementById("end_time").innerHTML   = "讲课时长:  " + 0 + "分钟";
 			}
-			if(items[2] != ""){
-				details = items[2].split("-");
-				if (details.length == 2){
-					redis_type  = details[0];
-					redis_click = details[1];
-					if(redis_type == "move" ){
-						// 更新当前步骤
-						self.competitor_step = self.competitor_step + 1;
-						self.chess_player.move(redis_click);
-					}else if(redis_type == "pack_chess"){
-						// 更新当前步骤
-						self.competitor_step = self.competitor_step + 1;
-						self.chess_player.pack_chess();
-					}else if(redis_type == "open_chess"){
-						// 更新当前步骤
-						self.competitor_step = self.competitor_step + 1;
-						self.chess_player.open_chess();
-					}else if(redis_type == "restart"){
-						self.restart();
-					}
-				}
-			}
 		watch_competitor_timer   = setTimeout("chess_classroom_manager_obj.watch_competitor()", 500);
 		}	
 		var tmp_step_seq  = self.competitor_step + 1;
@@ -443,7 +423,7 @@ chess_classroom_manager.prototype.sync_tea_chess = function(){
 						self.competitor_step = self.competitor_step + 1;
 						self.chess_player.pack_chess(false);
 					}else if(redis_type == "restart"){
-						self.competitor_step = 0;
+						self.competitor_step = self.competitor_step + 1;
 						self.chess_player.restart(self.chess_player.init_cp_coord_ids, false);
 					}else if(redis_type == "open_chess"){
 						self.competitor_step = self.competitor_step + 1;
