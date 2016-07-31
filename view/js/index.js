@@ -1,4 +1,5 @@
-﻿
+﻿count_down_timer = setTimeout("count_down('2016/09/25 17:25:00')", 1000);
+
 jQuery(function(){
     $ = jQuery ;
     //main menu
@@ -8,22 +9,23 @@ jQuery(function(){
     $('#templatemo_timeline').height(banner_height);
     $('#templatemo_contact').height(banner_height);
     $('#templatemo_class').height(banner_height);
+    $('.banner').height(banner_height);
     $("#templatemo_banner_menu ul").singlePageNav({offset:$('#templatemo_banner_menu').outerHeight()});
     //banner slide
-    $('.banner').unslider({fluid: true});
-    $(window).on("load scroll resize", function(){
-        banner_height = $(window).height() - $('#templatemo_banner_menu').outerHeight();
-        $('.banner').height(banner_height);
-        $('.banner ul li').height(banner_height);
-        if(banner_height > 250){
-            caption_margin_top = (banner_height-100)/2;
-            $('.banner .slide_caption:hidden').show();
-            $('.banner .slide_caption').css({"margin-top":caption_margin_top});
-        }else{
-            $('.banner .slide_caption').hide();
-        }
-        $("#templatemo_banner_slide > ul > li").css({"background-size":"100% 100%"});
-    });
+    // $('.banner').unslider({fluid: true});
+    // $(window).on("load scroll resize", function(){
+    //     banner_height = $(window).height() - $('#templatemo_banner_menu').outerHeight();
+    //     
+    //     $('.banner ul li').height(banner_height);
+    //     if(banner_height > 250){
+    //         caption_margin_top = "50px";
+    //         $('.banner .slide_caption:hidden').show();
+    //         $('.banner .slide_caption').css({"margin-top":caption_margin_top});
+    //     }else{
+    //         $('.banner .slide_caption').hide();
+    //     }
+    //     $("#templatemo_banner_slide > div").css({"background-size":"100% 100%"});
+    // });
    //about icon
     $(window).on("load scroll resize", function(){
         about_wap_width = $(".about_icon").width();
@@ -118,3 +120,36 @@ jQuery(function(){
         });
     });
 });
+
+//倒计时
+function count_down(dd){
+    //取得指定时间的总毫秒数
+    var t = new Date(dd).getTime();
+    //取得当前毫秒数
+    n = new Date().getTime();
+    // alert(n);
+    //得到时间差
+    c = t - n;
+    // alert(c);
+    if(c<=0){
+        //如果差小于等于0  也就是过期或者正好过期，则推出程序
+        $('#count_down').text('0天0时0秒0秒');
+        // //清除计时器
+        // clearInterval(count_down_timer);
+        //结束执行
+        return;
+    }
+    //一天共多少毫秒
+    var ds = 60*60*24*1000,
+    //总毫秒除以一天的毫秒 得到相差的天数
+    d = parseInt(c/ds),
+    //然后取完天数之后的余下的毫秒数再除以每小时的毫秒数得到小时
+    h = parseInt((c-d*ds)/(3600*1000)),
+    //减去天数和小时数的毫秒数剩下的毫秒，再除以每分钟的毫秒数，得到分钟数
+    m = parseInt((c - d*ds - h*3600*1000)/(60*1000)),
+    //得到最后剩下的毫秒数除以1000 就是秒数，再剩下的毫秒自动忽略即可
+    s = parseInt((c-d*ds-h*3600*1000-m*60*1000)/1000);
+    $('#count_down').text(d + '天' + h + '时' + m + '分' + s + '秒');
+    // alert(d + '天' + h + '时' + m + '秒');
+    setTimeout("count_down('2016/09/25 17:25:00')", 1000);
+}

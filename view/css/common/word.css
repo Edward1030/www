@@ -64,7 +64,12 @@ color:black;
 font: normal normal normal 23px/23px 'SimSun', SimSun;
 font-weight: bold;
 }
+.p_sty_3
+{ 
+color:white;
+font: normal normal normal 23px/23px 'SimSun', SimSun;
 
+}
 .wy-mod-banner p{
 color:black;
 font: normal normal normal 18px/23px 'SimSun', SimSun;
