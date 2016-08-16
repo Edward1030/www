@@ -1,4 +1,4 @@
-﻿count_down_timer = setTimeout("count_down('2016/09/25 17:25:00')", 1000);
+﻿count_down_timer = setTimeout("count_down('2016/08/18 20:00:00')", 1000);
 
 jQuery(function(){
     $ = jQuery ;
@@ -151,5 +151,5 @@ function count_down(dd){
     s = parseInt((c-d*ds-h*3600*1000-m*60*1000)/1000);
     $('#count_down').text(d + '天' + h + '时' + m + '分' + s + '秒');
     // alert(d + '天' + h + '时' + m + '秒');
-    setTimeout("count_down('2016/09/25 17:25:00')", 1000);
+    setTimeout("count_down('2016/08/18 20:00:00')", 1000);
 }
