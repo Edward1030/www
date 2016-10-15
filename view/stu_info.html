@@ -28,125 +28,21 @@
     <div style="border:solid 0px; width:1200px; margin:auto;"> 
     <div id= "xuanxiang" style = "float:left; height:320px; width:160px; margin-top:40px; border-right:solid 0px;">
         <ul class="nav nav-pills nav-stacked">
-           <li>                           <a id="xkjf" href="javascript:;"><img src="images/icon/kc.png" style="vertical-align:bottom; height:25px; width:25px;"/><span class="span_sty"> 课程选择</span></a></li>
-           <li  style="margin-top:35px; "><a id="yxkc" href="javascript:;"><img src="images/icon/fy.png" style="vertical-align:bottom; height:25px; width:25px;"><span class="span_sty"> 已选缴费</span></img></a></li>
+          <li ><a id="yxkc" href="javascript:;"><img src="images/icon/fy.png" style="vertical-align:bottom; height:25px; width:25px;"><span class="span_sty"> 已选缴费</span></img></a></li>
+           <li style="margin-top:35px; ">                           <a id="xkjf" href="javascript:;"><img src="images/icon/kc.png" style="vertical-align:bottom; height:25px; width:25px;"/><span class="span_sty"> 课程选择</span></a></li>
+
            <li  style="margin-top:35px; "><a id="xxxg" href="javascript:;"><img src="images/icon/zx.png" style="vertical-align:bottom; height:25px; width:25px;"><span class="span_sty"> 个人信息</span></img></a></li>
            <li  style="margin-top:35px; "><a id="qjgl" href="javascript:;"><img src="images/icon/qj.png" style="vertical-align:bottom; height:25px; width:25px;"><span class="span_sty"> 请假管理</span></img></a></li>
         </ul>
     </div>
     <div class="con_page" style="float:left;margin-top:40px; margin-left:40px;height: 520px; width:1000px; border-left:solid 1px; padding-left:50px;">
-        <div id="xkjf_li" style="position:absolute;margin-left:10px;">
-            <div style = "margin-top:10px;">
-                <p style="float:left;">课程选择：</p>
-                <div style="float:left;">
-                <label class="checkbox-inline">
-                  <input type="radio" name="course_opt" id="optionsRadios1" 
-                     value="基础课程" checked> 基础课程
-                </label>
-                <label class="checkbox-inline">
-                  <input type="radio" name="course_opt" id="optionsRadios2" 
-                     value="入门课程"> 入门课程
-                </label>
-                <label class="checkbox-inline">
-                  <input type="radio" name="course_opt" id="optionsRadios3" 
-                     value="提高课程"> 提高课程
-                </label>
-                <label class="checkbox-inline">
-                  <input type="radio" name="course_opt" id="optionsRadios4" 
-                     value="进阶课程"> 进阶课程
-               </label>
-               <label class="checkbox-inline">
-                  <input type="radio" name="course_opt" id="optionsRadios5" 
-                     value="职业化课程"> 职业化课程
-               </label>
-               </div>
+        <div class="con_page" id="xkjf_li" style="position:absolute;">
+            <div style="margin-top:100px;">
+                <p style=""><span style="color:red;">*</span>课程、课时、时间在试听之后，如有学习意愿，则老师会编辑协商后的课程信息。</p>
+                <p style=""><span style="color:red;">*</span>学生只需依据试听老师的指引在“已选续费”中缴纳费用即可。</p>
+                <p style=""><span style="color:red;">*</span>任何问题欢迎来电186-3866-9667咨询，或添加微信“23247191”。</p>
+                
             </div>
-            <div style="clear:both"></div>
-            <div style="border:0px solid; margin-top:0px;">
-                <div style="float:left; border:solid 0px;" >
-                    <p style="">时间选择：</p>
-                </div>
-                <div style="float:left; border:solid 0px; margin-left:20px;">
-                    <div class="radio" style="margin-top:5px;">
-                       <label >
-                          <input class="" type="radio" name="time_opt" id="optionsRadios6" 
-                             value="周一、周三、周五。19点~20点（一课时）" checked>每周一、周三、周五&nbsp;19点~20点（一课时）
-                       </label>
-                    </div>
-                    <div class="radio" style="margin-top:5px;">
-                       <label>
-                          <input type="radio" name="time_opt" id="optionsRadios7" 
-                             value="周一、周三、周五。20点~21点（一课时）" > 每周一、周三、周五&nbsp;20点~21点（一课时）
-                       </label>
-                    </div>
-                    <div class="radio"  style="margin-top:10px;">
-                        <label>
-                            <input type="radio" name="time_opt" id="optionsRadios8" 
-                             value="周二、周四。19点~20点（一课时）">
-                             每周二、周四&nbsp;19点~20点（一课时）
-                        </label>
-                    </div>
-                    <div class="radio"  style="margin-top:10px;">
-                        <label>
-                            <input type="radio" name="time_opt" id="optionsRadios9" 
-                             value="周二、周四。20点~21点（一课时）">
-                             每周二、周四&nbsp;20点~21点（一课时）
-                        </label>
-                    </div>
-                    <div class="radio"  style="margin-top:10px;">
-                       <label>
-                          <input type="radio" name="time_opt" id="optionsRadios10" 
-                             value="周六、周日。09点~11点（两课时）">
-                            每周六、周日&nbsp;09点~11点（两课时）
-                       </label>
-                    </div>
-                    <div class="radio"  style="margin-top:10px;">
-                       <label>
-                          <input type="radio" name="time_opt" id="optionsRadios11" 
-                             value="周六、周日。15点~17点（两课时）">
-                            每周六、周日&nbsp;15点~17点（两课时）
-                       </label>
-                    </div>
-                    <div class="radio"  style="margin-top:10px;">
-                       <label>
-                          <input type="radio" name="time_opt" id="optionsRadios12" 
-                             value="周六、周日。18点~20点（两课时）">
-                            每周六、周日&nbsp;18点~20点（两课时）
-                       </label>
-                    </div>
-                    <div class="radio"  style="margin-top:10px;">
-                       <label>
-                          <input type="radio" name="time_opt" id="optionsRadios13" 
-                             value="其它">
-                            其它（需要与客服沟通，帮助安排上课时间。）
-                       </label>
-                    </div>
-                </div>
-            </div>
-            <div style="clear:both"></div>
-            <div style="border:0px solid; ">
-            <div style="border:0px solid; margin-top:0px;">
-                <p style="">总需课时：&nbsp;<span style="font-weight:normal;" id="ks">10节课</span></p>
-            </div>
-            <div style="clear:both"></div>
-            <div style="border:0px solid; margin-top:0px;">
-                <p style="">课时计费: &nbsp;<span style="font-weight:normal;" id="sf">60元/课</span></p>
-            </div>
-            <div style="clear:both"></div>
-            <div style="border:0px solid; margin-top:0px;">
-                <p style="">总需费用: &nbsp;<span style="font-weight:normal;" id="ks_sf">600元</span></p>
-            </div>
-            <div style="clear:both"></div>
-            <div style="border:0px solid; margin-top:0px;" id="jf">
-                <p style="float:left;">单次缴费：&nbsp;<span style="font-weight:normal;" id="dcjf" >600元</span></p>
-            </div>
-            <div style="clear:both"></div>
-            <div style="clear:both"></div>
-            <div style="border:solid 0px;">
-            <p style="font-weight:bold;float:left; margin-left:150px;">&nbsp;&nbsp;&nbsp;</p><button onclick="fkm_ff()"  class='btn btn-primary' style=" padding:2px 5px 2px 5px;"/><span class="span_sty">添&nbsp;加&nbsp;选&nbsp;课</span></button><span style="color:red; margin-left:20px;font: normal normal normal 18px/23px 'Century Gothic', sans-serif;" id="fkm_ts"></span>
-            </div>
-            <div style="clear:both"></div>
-          </div>
         </div>
         <div class="con_page" id="yxkc_li" style="position:absolute; display:none">
             <div style="margin-top:10px;">
