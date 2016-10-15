@@ -14,7 +14,7 @@
         echo '<html>'; 
         echo '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>'; 
         echo "<script type='text/javascript'>alert('注册失败，该用昵称已被使用!');</script>";
-        echo "<script type='text/javascript'>window.location.href='index.html'</script>";
+        echo "<script type='text/javascript'>window.location.href='../index.html'</script>";
         echo '</html>'; 
     }else{
         $reg_ret = $dal_api -> reg_user($user_id, $username, $passwd, $tel, $qq, $type);
@@ -25,13 +25,13 @@
             echo '<html>';  
             echo '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>'; 
             echo "<script type='text/javascript'>alert('注册成功!');</script>";
-            echo "<script type='text/javascript'>window.location.href='index.html'</script>";
+            echo "<script type='text/javascript'>window.location.href='../index.html'</script>";
             echo '</html>'; 
         }else{
             echo '<html>'; 
             echo '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>'; 
             echo "<script type='text/javascript'>alert('注册失败，系统错误，请联系客服!');</script>";
-            echo "<script type='text/javascript'>window.location.href='index.html'</script>";
+            echo "<script type='text/javascript'>window.location.href='../index.html'</script>";
             echo "<script type='text/javascript'></script>";
             echo '</html>'; 
         }
