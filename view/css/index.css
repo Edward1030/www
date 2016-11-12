@@ -111,8 +111,12 @@ h1 {
     -o-background-size:800px 350px;
 }
 .templatemo_banner_slide_03 {
-    background: url('../images/templatemo_banner_slide_03.jpg') ;
-    background-size: cover;
+    background: url('../images/qipan.png');
+    background-repeat:no-repeat;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
 }
 .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 /*about our organization*/

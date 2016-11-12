@@ -8,6 +8,13 @@ function make_person_center_dynamic_part(){
   $.post("/controller/get_user_info_from_session.php", {},  make_person_center_banner);
 }
 
+function check_if_login(){
+  $.post("/controller/get_user_info_from_session.php", {},  user_use_for_test);
+}
+
+function make_person_center_dynamic_part(){
+  $.post("/controller/get_user_info_from_session.php", {},  make_person_center_banner);
+}
 
 function make_index_banner(ret_str){
   var items  = ret_str.replace(/\s/g,'').split("#");
@@ -91,4 +98,15 @@ function make_person_center_banner(ret_str){
   }
   // 添加到html
   $('#title').after(content);
+}
+
+function user_use_for_test(ret_str){
+var items  = ret_str.replace(/\s/g,'').split("#");
+  var content;
+  if(items.length != 2){
+    // 用户没有登录
+      alert("请 先 登 录");
+  }else{
+    window.location.href="controller/judge_stu_or_teacher.php"; 
+  }
 }

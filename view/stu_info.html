@@ -37,12 +37,25 @@
     </div>
     <div class="con_page" style="float:left;margin-top:40px; margin-left:40px;height: 520px; width:1000px; border-left:solid 1px; padding-left:50px;">
         <div class="con_page" id="xkjf_li" style="position:absolute;">
-            <div style="margin-top:100px;">
+            <div style="margin-top:10px;">
                 <p style=""><span style="color:red;">*</span>课程、课时、时间在试听之后，如有学习意愿，则老师会编辑协商后的课程信息。</p>
                 <p style=""><span style="color:red;">*</span>学生只需依据试听老师的指引在“已选续费”中缴纳费用即可。</p>
-                <p style=""><span style="color:red;">*</span>任何问题欢迎来电186-3866-9667咨询，或添加微信“23247191”。</p>
+ 
                 
             </div>
+            <div style="margin-top:100px;">
+              <p>试听排课：</p>
+            <div style="margin-left:100px;">
+                  <p style=""><span style="color:red;"></span>电话联系：186-3866-9667。
+                  </p>
+                  <p>
+                  微信联系：23247191
+                  </p>
+                  <p>
+                  QQ&nbsp;联系：1847549537
+                  </p>
+            </div>
+          </div>
         </div>
         <div class="con_page" id="yxkc_li" style="position:absolute; display:none">
             <div style="margin-top:10px;">
@@ -373,7 +386,7 @@ $("#optionsRadios5").click(function(){
         return true;
     }
     // 验证码
-    var code;
+    var code="-";
     // 生成验证码
     function get_code(){
       code = "";
@@ -419,8 +432,7 @@ $("#optionsRadios5").click(function(){
         var ret_3 = check_real_name();
         var ret_4 = check_tel();
         var ret_5 = check_qq();
-        var ret_6 = check_code_1();
-                            
+        var ret_6 = check_code_1();       
         return (ret_1 && ret_2 && ret_3 && ret_4 && ret_5 && ret_6);
     };
     // 付款吗付费

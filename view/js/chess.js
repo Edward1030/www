@@ -415,10 +415,10 @@ chess_player.prototype.check_stu_tea_ready = function(){
 			(items[0] == "") ? tea="老&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师: <span style='color:red'>缺席</span>":tea="老&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师: <span style='color:white'>"+items[0]+"</span>"; 
 			(items[1] == "") ? stu="学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生: <span style='color:red'>缺席</span>":stu="学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生: <span style='color:white'>"+items[1]+"</span>"; 
 			if(items[0] == "未知"){
-				tea = "老&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师: <a href='/controller/stu_info.php'><span style='color:white'>点击完善“个人信息”/span></a>";
+				tea = "老&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师: <a href='stu_info.html' style='text-decoration:none;'><span style='color:white'>点击完善“个人信息”/span></a>";
 			}
 			if(items[1] == "未知"){
-				stu = "学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生: <a href='/controller/stu_info.php'><span style='color:white'>点击完善“个人信息”</span></a>";
+				stu = "学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生: <a href='stu_info.html' style='text-decoration:none;'><span style='color:white'>点击完善“个人信息”</span></a>";
 			}
 			document.getElementById("tea_name").innerHTML = tea;
 			document.getElementById("stu_name").innerHTML = stu;

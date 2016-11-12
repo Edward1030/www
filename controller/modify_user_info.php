@@ -13,14 +13,14 @@
         echo '<html>'; 
         echo '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>'; 
         echo "<script type='text/javascript'>alert('注册失败，系统错误，请联系客服!');</script>";
-        echo "<script type='text/javascript'>window.location.href='person_center.php'</script>";
+        echo "<script type='text/javascript'>window.location.href='/view/stu_info.html'</script>";
         echo "<script type='text/javascript'></script>";
         echo '</html>'; 
     }else{
         echo '<html>'; 
         echo '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>'; 
-        echo "<script type='text/javascript'>alert('修改成功。 注销登陆后生效！');</script>";
-        echo "<script type='text/javascript'>window.location.href='person_center.php'</script>";
+        echo "<script type='text/javascript'>alert('修改成功');</script>";
+        echo "<script type='text/javascript'>window.location.href='/view/stu_info.html'</script>";
         echo "<script type='text/javascript'></script>";
         echo '</html>'; 
     }

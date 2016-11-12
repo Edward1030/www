@@ -5,7 +5,7 @@
 	    echo '<html>'; 
 	    echo '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>'; 
 	    echo "<script type='text/javascript'>alert('请先登录!');</script>";
-	    echo "<script type='text/javascript'>window.location.href='index.php'</script>";
+	    echo "<script type='text/javascript'>window.location.href='/index.html'</script>";
 	    echo '</html>'; 
     }else{
     	if($_SESSION['user_type'] == "s"){	
